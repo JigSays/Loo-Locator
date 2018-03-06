@@ -23,13 +23,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static("app/public"));
 
 // Routes
 // =============================================================
-require("./app/routing/html-routes.js")(app);
-require("./app/routing/author-api-routes.js")(app);
-require("./app/routing/post-api-routes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
+require("./app/routing/apiRoutes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
