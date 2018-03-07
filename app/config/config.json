@@ -4,8 +4,7 @@
     "password": "d8cvefjx60aept0o",
     "database": "sd6nwystu04ynmqb",
     "host": "jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com1",
-    "dialect": "mysql",
-    "port": 3300
+    "dialect": "mysql"
   },
   "test": {
     "username": "jr7bvyhuxc7kzzvr",
