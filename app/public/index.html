@@ -1,123 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Loo Locator</title>
+  <title>Loo Locator</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Gloria+Hallelujah" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <!-- Custom styles for this template -->
-    <link href="css/grayscale.css" rel="stylesheet">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Gloria+Hallelujah" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-   </style>
 
-  </head>
+    #map {
+      height: 100%;
+    }
 
-  <body id="page-top">
+    /* Optional: Makes the sample page fill the window. */
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Loo Locator</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#map">Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Intro Header -->
+  <header class="masthead">
+    <div class="intro-body">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Loo Locator</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#map">Map</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          </ul>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h1 class="brand-heading">Loo Locator</h1>
+            <p class="intro-text">"Find your loo, so you can poo."
+              <br>Created by "The Bean Red Heads."</p>
+            <a href="#map" class="btn btn-circle js-scroll-trigger">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </header>
 
-    <!-- Intro Header -->
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Loo Locator</h1>
-              <p class="intro-text">"Find your loo, so you can poo."
-                <br>Created by "The Bean Red Heads."</p>
-              <a href="#map" class="btn btn-circle js-scroll-trigger">
-                <i class="fa fa-angle-double-down animated"></i>
+  <!-- Map Section -->
+
+  <div id="map" style="width: 100%; height: 90%"></div>
+  <div>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Chicago, IL">
+      <input id="submit" type="button" value="Loo-hoo!">
+      <input id="newBathroom" type="button" value="Add A Bathroom">
+    </div>
+  </div>
+  <div>
+    <select id="locationSelect" style="width: 10%; visibility: hidden"></select>
+  </div>
+  <!-- About Section -->
+  <section id="about" class="content-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About Loo Locator</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quibusdam, iste dolorem alias sequi sint quisquam
+            repellendus quos, ut commodi, est sunt illo. Vitae ab inventore sed! Magnam, expedita voluptas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="content-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Contact the Loo Locator Team</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, itaque? Quas, recusandae rerum odio dolor aut fugit
+            architecto nulla incidunt ea, tempora dolores quis? At cumque magnam sit rem consectetur.</p>
+          <ul class="list-inline banner-social-buttons">
+            <li class="list-inline-item">
+              <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
+                <i class="fa fa-github fa-fw"></i>
+                <span class="network-name">Github</span>
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Map Section -->
-   
-    <div id="map" style="width: 100%; height: 90%"></div>
-<div>
-     <div id="floating-panel">
-        <input id="address" type="textbox" value="Chicago, IL">
-        <input id="submit" type="button" value="Loo-hoo!">
-      </div>
- </div>
- <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
-    <!-- About Section -->
-    <section id="about" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>About Loo Locator</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quibusdam, iste dolorem alias sequi sint quisquam repellendus quos, ut commodi, est sunt illo. Vitae ab inventore sed! Magnam, expedita voluptas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Contact the Loo Locator Team</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, itaque? Quas, recusandae rerum odio dolor aut fugit architecto nulla incidunt ea, tempora dolores quis? At cumque magnam sit rem consectetur.</p>
-            <ul class="list-inline banner-social-buttons">
-              <li class="list-inline-item">
-                <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-                  <i class="fa fa-github fa-fw"></i>
-                  <span class="network-name">Github</span>
-                </a>
-              </li>
-              <!-- <li class="list-inline-item">
+            </li>
+            <!-- <li class="list-inline-item">
                 <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
                   <i class="fa fa-github fa-fw"></i>
                   <span class="network-name">Github</span>
@@ -129,124 +140,190 @@
                   <span class="network-name">Github</span>
                 </a>
               </li> -->
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+  <div id="modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-    <!-- Footer -->
-    <footer>
-      <div class="container text-center">
-        <p>Copyright &copy; Loo Locator 2018</p>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>Name</strong>
+          </p>
+          <input type="text" class="form-control" id="location">
+          <p>
+            <strong>Adress</strong>
+          </p>
+          <input type="text" class="form-control" id="Adress">
+          <p>
+            <strong>Handicap Acessability</strong>
+          </p>
+          <select>
+            <option value="Yes"> Yes</option>
+            <option value="No"> No</option>
+          </select>
+          <p>
+            <strong>clean</strong>
+          </p>
+          <select>
+            <option value="fa-star">&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+          </select>
+          <p>
+            <strong>privacy</strong>
+          </p>
+          <select>
+            <option value="fa-star">&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+            <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+          </select>
+          <p>
+            <strong>Directions</strong>
+          </p>
+          <input type="text" class="form-control" id="Direction">
+          <p>
+            <strong>closed</strong>
+          </p>
+          <select>
+            <option value="Yes"> Yes</option>
+            <option value="No"> No</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-submit="modal">submit</button>
+        </div>
       </div>
-    </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script src="./vendor/jquery/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </div>
 
-    <!-- Plugin JavaScript -->
-    <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>Copyright &copy; Loo Locator 2018</p>
+    </div>
+  </footer>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script src="./vendor/jquery/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.js"></script>
+  <!-- Plugin JavaScript -->
+  <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
+
+  <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.js"></script>
   <script>
     var map;
-var latLong = '';
+    var latLong = '';
 
-$(document).ajaxStart(function(){
-    $("#wait").css("visibility", "visible");
-});
-$(document).ajaxComplete(function(){
-    $("#wait").css("visibility", "hidden");
-});
+    $(document).ajaxStart(function () {
+      $("#wait").css("visibility", "visible");
+    });
+    $(document).ajaxComplete(function () {
+      $("#wait").css("visibility", "hidden");
+    });
 
-/** 
-* This function initializes map to the latitude and longitude of Chicago, upon starting the application.
-* 
-*/ 
-var map, infoWindow;
-function initMap() {
-    var userLocation = { lat: 41.89633, lng: -87.61871 }; 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    /** 
+    * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
+    * 
+    */
+    var map, infoWindow;
+    function initMap() {
+      var userLocation = { lat: 41.89633, lng: -87.61871 };
+      var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 18,
         center: userLocation,
         gestureHandling: 'cooperative'
-    });
-    infoWindow = new google.maps.InfoWindow;
-    if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+      });
+      infoWindow = new google.maps.InfoWindow;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Found You!');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Found You!');
+          infoWindow.open(map);
+          map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+      var marker = new google.maps.Marker({
+        position: userLocation,
+        map: map,
+        title: 'Click to zoom'
+      });
+
+      //     map.addListener('center_changed', function() {
+      //       // 3 seconds after the center of the map has changed, pan back to the
+      //       // marker.
+      //       window.setTimeout(function() {
+      //         map.panTo(marker.getPosition());
+      //       }, 8000);
+      //     });
+
+      marker.addListener('click', function () {
+        map.setZoom(8);
+        map.setCenter(marker.getPosition());
+      });
+      var geocoder = new google.maps.Geocoder();
+
+      document.getElementById('submit').addEventListener('click', function () {
+        geocodeAddress(geocoder, map);
+      });
+    }
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('address').value;
+      geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status === 'OK') {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
           });
         } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+          alert('Geocode was not successful for the following reason: ' + status);
         }
-    var marker = new google.maps.Marker({
-          position: userLocation,
-          map: map,
-          title: 'Click to zoom'
-        });
-
-    //     map.addListener('center_changed', function() {
-    //       // 3 seconds after the center of the map has changed, pan back to the
-    //       // marker.
-    //       window.setTimeout(function() {
-    //         map.panTo(marker.getPosition());
-    //       }, 8000);
-    //     });
-
-        marker.addListener('click', function() {
-          map.setZoom(8);
-          map.setCenter(marker.getPosition());
-        });
-        var geocoder = new google.maps.Geocoder();
-
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-}
-function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+      });
+    }
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+    $("#newBathroom").on("click", function (event) {
+      event.preventDefault();
+      $("#modal").modal("toggle");
+    });
   </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
   </script>
-
-  </body>
+</body>
 
 </html>
