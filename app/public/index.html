@@ -91,6 +91,7 @@
         <!-- <input onclick="clearMarkers();" type=button value="Hide Markers">
         <input onclick="showMarkers();" type=button value="Show All Markers"> -->
         <input onclick="deleteMarkers();" type=button value="Delete Markers">
+        <input id="newBathroom" type="button" value="Add A Bathroom">
         
       </div>
  </div>
@@ -139,6 +140,70 @@
       </div>
     </section>
 
+    <div id="modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+       
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <strong>Name</strong>
+              </p>
+              <input type="text" class="form-control" id="location">
+              <p>
+                <strong>Adress</strong>
+              </p>
+              <input type="text" class="form-control" id="Adress">
+              <p>
+                <strong>Handicap Acessability</strong>
+              </p>
+              <select>
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+              <p>
+                <strong>clean</strong>
+              </p>
+              <select>
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>privacy</strong>
+              </p>
+              <select>
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>Directions</strong>
+              </p>
+              <input type="text" class="form-control" id="Direction">
+              <p>
+                <strong>closed</strong>
+              </p>
+              <select>
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+            </div>
+       
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-submit="modal">submit</button>
+            </div>
+          </div>
+       
+        </div>
+       </div>
     <!-- Footer -->
     <footer>
       <div class="container text-center">
@@ -281,6 +346,10 @@ function geocodeAddress(geocoder, resultsMap) {
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+      $("#newBathroom").on("click", function(event) {
+      event.preventDefault();
+      $("#modal").modal("toggle");
+      });
   </script>
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
