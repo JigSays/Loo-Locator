@@ -21,6 +21,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <!-- Custom styles for this template -->
     <link href="css/grayscale.css" rel="stylesheet">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+   </style>
 
   </head>
 
@@ -69,8 +82,15 @@
     </header>
 
     <!-- Map Section -->
-    <div id="map"></div>
-
+   
+    <div id="map" style="width: 100%; height: 90%"></div>
+<div>
+     <div id="floating-panel">
+        <input id="address" type="textbox" value="Chicago, IL">
+        <input id="submit" type="button" value="Loo-hoo!">
+      </div>
+ </div>
+ <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
     <!-- About Section -->
     <section id="about" class="content-section text-center">
       <div class="container">
@@ -123,17 +143,109 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="./vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="./vendor/jquery/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&sensor=false"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
+  <script>
+    var map;
+var latLong = '';
+
+$(document).ajaxStart(function(){
+    $("#wait").css("visibility", "visible");
+});
+$(document).ajaxComplete(function(){
+    $("#wait").css("visibility", "hidden");
+});
+
+/** 
+* This function initializes map to the latitude and longitude of Chicago, upon starting the application.
+* 
+*/ 
+var map, infoWindow;
+function initMap() {
+    var userLocation = { lat: 41.89633, lng: -87.61871 }; 
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 18,
+        center: userLocation,
+        gestureHandling: 'cooperative'
+    });
+    infoWindow = new google.maps.InfoWindow;
+    if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Found You!');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+    var marker = new google.maps.Marker({
+          position: userLocation,
+          map: map,
+          title: 'Click to zoom'
+        });
+
+        map.addListener('center_changed', function() {
+          // 3 seconds after the center of the map has changed, pan back to the
+          // marker.
+          window.setTimeout(function() {
+            map.panTo(marker.getPosition());
+          }, 8000);
+        });
+
+        marker.addListener('click', function() {
+          map.setZoom(8);
+          map.setCenter(marker.getPosition());
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+}
+function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
+  </script>
 
   </body>
 
