@@ -229,6 +229,11 @@
     var map;
     var markers = [];
 
+    $.get("/api/all").then(function(data){
+      console.log(data);
+      //add a new marker for each object in the data array 
+    });
+
 $(document).ajaxStart(function(){
     $("#wait").css("visibility", "visible");
 });
@@ -236,9 +241,21 @@ $(document).ajaxComplete(function(){
     $("#wait").css("visibility", "hidden");
 });
 
-// $("#modal-submit").on("click", function(event){
+$("#modal-submit").on("click", function(event){
+  var newLocation = {
+      address: $("#Adress").val().trim(),
+      body: $("#chirp-box").val().trim(),
+      created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+    };
 
-// });
+  $.post("/api/new", newLocation)
+      // On success, run the following code
+      .then(function() {
+  
+      });
+});
+
+
 //click lisyener on modal-submit
 // get all the form info from the modal
 // make a post request 
