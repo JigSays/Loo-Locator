@@ -26,18 +26,18 @@ module.exports = function(app) {
             where: {
               lat: req.params.lat,
               long: req.parms.long
-          }).then(function(dbPost) {
+          }}).then(function(dbPost) {
             res.json(dbPost);
           })
         })
-      )};
+      
 
         app.get("/api/posts/:closed", function(req, res) {
           //Returns locations where users have marked them closed
           db.Post.findOne({
             where: {
               closed: "true"
-          }).then(function(dbPost) {
+          }}).then(function(dbPost) {
             res.json(dbPost);
           });
         });
@@ -73,3 +73,4 @@ module.exports = function(app) {
               res.json(dbPost);
             });
         });
+      }
