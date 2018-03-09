@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.get("/api/all", function(req, res) {
 
         // Finding all bathroom locations, and then returning them to the user as JSON.
-        Location.findAll({}).then(function(results) {
+        db.Bathrooms.findAll({}).then(function(results) {
           res.json(results);
         });
       });
@@ -43,10 +43,29 @@ module.exports = function(app) {
         });
       
         // POST route for saving a new locations
-        app.post("/api/posts", function(req, res) {
-          db.Post.create(req.body).then(function(dbPost) {
+        app.post("/api/new", function(req, res) {
+
+          // findOne where lat/long or address matchesreq.body.address
+          //if results are null
+          db.Bathrooms.create(req.body).then(function(dbPost) {
             res.json(dbPost);
           });
+          //else
+          //data.rating1 = data.rating1 + req.body.rating1
+          //data.rating2 = data.rating2 + req.body.rating2
+          //data.rating3 = data.rating3 + req.body.rating3
+          
+          db.Post.update(
+            data,
+            {
+              where: {
+                long: req.body.long,
+                lat: req.body.lat
+              }
+            }).then(function(dbPost) {
+              res.json(dbPost);
+            });
+
         });
       
         // DELETE route for deleting locations
