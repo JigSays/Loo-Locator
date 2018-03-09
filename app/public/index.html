@@ -84,6 +84,7 @@
     <!-- Map Section -->
    
     <div id="map" style="width: 100%; height: 90%"></div>
+    
 <div>
      <div id="floating-panel">
         <input id="address" type="textbox" value="Chicago, IL">
@@ -198,7 +199,7 @@
             </div>
        
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-submit="modal">submit</button>
+              <button id="modal-submit" type="button" class="btn btn-default" data-submit="modal">submit</button>
             </div>
           </div>
        
@@ -234,6 +235,16 @@ $(document).ajaxStart(function(){
 $(document).ajaxComplete(function(){
     $("#wait").css("visibility", "hidden");
 });
+
+// $("#modal-submit").on("click", function(event){
+
+// });
+//click lisyener on modal-submit
+// get all the form info from the modal
+// make a post request 
+
+//get request find all
+// add marker for each location
 
 /** 
 * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
