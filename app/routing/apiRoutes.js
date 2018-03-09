@@ -17,7 +17,7 @@ module.exports = function(app) {
         Location.findAll({}).then(function(results) {
           res.json(results);
         });
-      }
+      });
       
         // Get rotue for retrieving a single post
     app.get("/api/posts/:lat-long", function(req, res) {
@@ -73,4 +73,3 @@ module.exports = function(app) {
               res.json(dbPost);
             });
         });
-    )};
