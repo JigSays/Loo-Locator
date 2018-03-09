@@ -267,8 +267,12 @@ $("#modal-submit").on("click", function(event){
   $.post("/api/new", newLocation)
       // On success, run the following code
       .then(function() {
-  
-      });
+        var clearModal = document.getElementsByTagName("input");
+        clearModal[4].value = "";
+        clearModal[5].value = "";
+        clearModal[6].value = "";
+        $("#modal").modal("toggle");
+          });
 });
 
 
