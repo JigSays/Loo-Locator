@@ -22,34 +22,34 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.BOOLEAN
     },
     clean1star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     clean2star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     clean3star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     clean4star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     clean5star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     priv1star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     priv2star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     priv3star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     priv4star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     priv5star: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.INTEGER
     },
     directions: {
       type: Sequelize.STRING
