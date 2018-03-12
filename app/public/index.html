@@ -103,7 +103,10 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>About Loo Locator</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quibusdam, iste dolorem alias sequi sint quisquam repellendus quos, ut commodi, est sunt illo. Vitae ab inventore sed! Magnam, expedita voluptas.</p>
+            <p>Whether you have Crohn's, Colitis, IBS or a you just want to find a nice clean public restroom near you or wherever
+                you’re headed, Loo-Locator is here to help! All bathrooms are crowdsourced entries and ratings are based on the
+                submitter’s personal opinion. Loo-Locator | Bean Redheads assumes no legal liability for content and makes assertions
+                to the accuracy of the information provided by our users. </p>
           </div>
         </div>
       </div>
@@ -115,10 +118,11 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Contact the Loo Locator Team</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, itaque? Quas, recusandae rerum odio dolor aut fugit architecto nulla incidunt ea, tempora dolores quis? At cumque magnam sit rem consectetur.</p>
+            <p>To contact the Loo-Locator Team (aka Bean RedHeads) find us on GitHub! We’d love to hear your suggestions, questions
+                and personal experiences with our app! </p>
             <ul class="list-inline banner-social-buttons">
               <li class="list-inline-item">
-                <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
+                  <a href="https://github.com/JigSays/Loo-Locator" class="btn btn-default btn-lg">
                   <i class="fa fa-github fa-fw"></i>
                   <span class="network-name">Github</span>
                 </a>
@@ -143,7 +147,7 @@
 
     <div id="modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-       
+     
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
@@ -162,44 +166,48 @@
                 <strong>Handicap Acessability</strong>
               </p>
               <select id="handicap">
-                <option value="Yes"> Yes</option>
-                <option value="No"> No</option>
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
               </select>
               <p>
-                <strong>Clean</strong>
+                <strong>Cleanliness</strong>
               </p>
-              <select id="clean">
-                <option value="fa-star">&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              <select id="cleanStar">
+                <option value=""></option>
+                <option value="1" class="fa-star">&#xf005;</option>
+                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
               </select>
               <p>
                 <strong>Privacy</strong>
               </p>
-              <select id="privacy">
-                <option value="fa-star">&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              <select id="privStar">
+                <option value=""></option>
+                <option value="1" class="fa-star">&#xf005;</option>
+                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
               </select>
               <p>
                 <strong>Directions</strong>
               </p>
-              <input type="text" class="form-control" id="directions">
+              <input type="text" class="form-control" id="direction">
               <p>
                 <strong>Closed</strong>
               </p>
-              <select id="closed">
-                <option value="Yes"> Yes</option>
-                <option value="No"> No</option>
+              <select id="close">
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
               </select>
             </div>
-       
+     
             <div class="modal-footer">
-              <button id="bathSubmit">submit</button>
+              <button id="bathSubmit" type="button" class="btn btn-default">submit</button>
             </div>
           </div>
        
@@ -242,30 +250,71 @@
 
 
       $("#bathSubmit").on("click", function (event) {
-        console.log("address test", $("#address2").val());
-        var newLocation = {
-          name: $("#name").val().trim(),
-          address: $("#address2").val().trim(),
-          handicap: $('#handicap option:selected').val(),
-          keyreq: $("#key").val(),
-          fee: $("#fee").val(),
-          clean1star: $("#clean option:selected").val(),
-          priv1star: $("#privacy option:selected").val(),
-          directions: $("#directions").val(),
-          closed: $("#closed option:selected").val(),
-        };
-        console.log("location////////////////////////////////////////////", newLocation);
+     console.log("address test", $("#address2").val());
+     var newLocation = {
+       name: $("#name").val().trim(),
+       address: $("#address2").val().trim(),
+       handicap: $("#handicap").val(),
+       keyreq: $("#key").val(),
+       fee: $("#fee").val(),
+       clean1star: 0,
+       clean2star: 0,
+       clean3star: 0,
+       clean4star: 0,
+       clean5star: 0,
+       priv1star: 0,
+       priv2star: 0,
+       priv3star: 0,
+       priv4star: 0,
+       priv5star: 0,
+       directions: $("#direction").val(),
+       closed: $("#closed").val(),
+     };
+     switch ($("#cleanStar").val()) {
+   case 1:
+       newLocation.clean1star =  1;
+       break;
+   case 2:
+       newLocation.clean2star =  1;
+       break;
+   case 3:
+       newLocation.clean3star =  1;
+       break;
+   case 4:
+       newLocation.clean4star =  1;
+       break;
+   case 5:
+       newLocation.clean5star =  1;
+}
+switch ($("#privStar").val()) {
+   case 1:
+       newLocation.priv1star =  1;
+       break;
+   case 2:
+     newLocation.priv2star =  1;
+       break;
+   case 3:
+     newLocation.priv3star =  1;
+       break;
+   case 4:
+     newLocation.priv4star =  1;
+       break;
+   case 5:
+     newLocation.priv5star =  1;
+}
+     console.log("location////////////////////////////////////////////", newLocation);
 
-        $.post("/api/new", newLocation)
-          // On success, run the following code
-          .then(function () {
-            var clearModal = document.getElementsByTagName("input");
-            clearModal[4].value = "";
-            clearModal[5].value = "";
-            clearModal[6].value = "";
-            $("#modal").modal("toggle");
-          });
-      });
+     $.post("/api/new", newLocation)
+       // On success, run the following code
+       .then(function () {
+         var clearModal = document.getElementsByTagName("input");
+         clearModal[4].value = "";
+         clearModal[5].value = "";
+         clearModal[6].value = "";
+         $("#modal").modal("toggle");
+       });
+       
+     });
 
       /** 
       * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
@@ -365,7 +414,7 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.clean + "</p>" + "<p>" + "Privacy: " + windowData.privacy + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>" + "<p>" + "Key Required: " + windowData.key + "</p>" + "<p>" + "Fee: " + windowData.fee + "</p>";
+              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
 
 
 
