@@ -133,7 +133,80 @@
                   <span class="network-name">Github</span>
                 </a>
               </li> -->
-        </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+       
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <strong>Name</strong>
+              </p>
+              <input type="text" class="form-control" id="name">
+              <p>
+                <strong>Address</strong>
+              </p>
+              <input type="text" class="form-control" id="address2">
+              <p>
+                <strong>Handicap Acessability</strong>
+              </p>
+              <select>
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+              <p>
+                <strong>clean</strong>
+              </p>
+              <select>
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>privacy</strong>
+              </p>
+              <select>
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>Directions</strong>
+              </p>
+              <input type="text" class="form-control" id="Direction">
+              <p>
+                <strong>closed</strong>
+              </p>
+              <select>
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+            </div>
+       
+            <div class="modal-footer">
+              <button id="bathSubmit" type="button" class="btn btn-default">submit</button>
+            </div>
+          </div>
+       
+        </div>
+       </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; Loo Locator 2018</p>
       </div>
     </div>
   </div>
@@ -142,252 +215,193 @@
 <div id="modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>
-          <strong>Name</strong>
+    <!-- Plugin JavaScript -->
+    <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
-          <input type="text" class="form-control" id="location">
-        </p>
-        <p>
-          <strong>Adress</strong>
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
 
-          <input type="text" class="form-control" id="Adress">
-        </p>
-        <p>
-          <strong>Handicap Acessability</strong>
-          <select>
-            <option value="Yes"> Yes</option>
-            <option value="No"> No</option>
-          </select>
-        </p>
-        <p>
-          <strong>Requires Key?</strong>
-          <select>
-            <option value="Yes"> Yes</option>
-            <option value="No"> No</option>
-          </select>
-        </p>
-        <p>
-          <strong>Cleanliness</strong>
-          <select>
-            <option class="fa-star">&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-          </select>
-        </p>
-        <p>
-          <strong>privacy</strong>
-          <select>
-            <option class="fa-star">&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-            <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-          </select>
-        </p>
-        <p>
-          <strong>Directions</strong>
-          <input type="text" class="form-control" id="Direction">
-        </p>
-        <p>
-          <strong>closed</strong>
-          <select>
-            <option value="Yes"> Yes</option>
-            <option value="No"> No</option>
-          </select>
-        </p>
-      </div>
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
+    </script>
+    <script>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-submit="modal">submit</button>
-      </div>
-    </div>
+      var markers = [];
+      var bathMarkers = [];
 
-  </div>
-</div>
-<!-- Footer -->
-<footer>
-  <div class="container text-center">
-    <p>Copyright &copy; Loo Locator 2018</p>
-  </div>
-</footer>
-
-<!-- Bootstrap core JavaScript -->
-<!-- <script src="./vendor/jquery/jquery.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
-
-<!-- Custom scripts for this template -->
-<script src="js/grayscale.js"></script>
-<script>
-  var map;
-  var markers = [];
-
-  $.get("/api/all").then(function (data) {
-    console.log(data);
-    //add a new marker for each object in the data array 
-  });
-
-  $(document).ajaxStart(function () {
-    $("#wait").css("visibility", "visible");
-  });
-  $(document).ajaxComplete(function () {
-    $("#wait").css("visibility", "hidden");
-  });
-
-  $("#modal-submit").on("click", function (event) {
-    var newLocation = {
-      address: $("#Adress").val().trim(),
-      body: $("#chirp-box").val().trim(),
-      created_at: moment().format("YYYY-MM-DD HH:mm:ss")
-    };
-
-    $.post("/api/new", newLocation)
-      // On success, run the following code
-      .then(function () {
-
+      $(document).ajaxStart(function () {
+        $("#wait").css("visibility", "visible");
       });
-  });
+      $(document).ajaxComplete(function () {
+        $("#wait").css("visibility", "hidden");
+      });
 
 
-  //click lisyener on modal-submit
-  // get all the form info from the modal
-  // make a post request 
 
-  //get request find all
-  // add marker for each location
-
-  /** 
-  * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
-  * 
-  */
-  var map, infoWindow;
-  function initMap() {
-    var userLocation = { lat: 41.89633, lng: -87.61871 };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 18,
-      center: userLocation,
-      gestureHandling: 'cooperative'
-    });
-    google.maps.event.addListener(map, 'click', function (event) {
-      placeMarker(event.latLng, map);
-    });
-
-    infoWindow = new google.maps.InfoWindow;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+      $("#bathSubmit").on("click", function (event) {
+        console.log("address test", $("#address2").val());
+        var newLocation = {
+          name: $("#name").val().trim(),
+          long: $("#long").val(),
+          lat: $("#lat").val(),
+          address: $("#address2").val().trim(),
+          handicap: $("#handicap").val(),
+          keyreq: $("#key").val(),
+          fee: $("#fee").val(),
+          clean1star: $("#clean1star").val(),
+          clean2star: $("#clean2star").val(),
+          clean3star: $("#clean3star").val(),
+          clean4star: $("#clean4star").val(),
+          clean5star: $("#clean5star").val(),
+          priv1star: $("#priv1star").val(),
+          priv2star: $("#priv2star").val(),
+          priv3star: $("#priv3star").val(),
+          priv4star: $("#priv4star").val(),
+          priv5star: $("#priv5star").val(),
+          directions: $("#direction").val(),
+          closed: $("#closed").val(),
         };
+        console.log("location////////////////////////////////////////////", newLocation);
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Found You!');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function () {
-        handleLocationError(true, infoWindow, map.getCenter());
+        $.post("/api/new", newLocation)
+          // On success, run the following code
+          .then(function () {
+            var clearModal = document.getElementsByTagName("input");
+            clearModal[4].value = "";
+            clearModal[5].value = "";
+            clearModal[6].value = "";
+            $("#modal").modal("toggle");
+          });
       });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-    // var marker = new google.maps.Marker({
-    //       position: userLocation,
-    //       map: map,
-    //       title: 'Click to zoom'
-    //     });
 
-    //     map.addListener('center_changed', function() {
-    //       // 3 seconds after the center of the map has changed, pan back to the
-    //       // marker.
-    //       window.setTimeout(function() {
-    //         map.panTo(marker.getPosition());
-    //       }, 8000);
-    //     });
+      /** 
+      * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
+      * 
+      */
+      var map, infoWindow;
+      function initMap() {
+        var userLocation = { lat: 41.89633, lng: -87.61871 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: userLocation,
+          gestureHandling: 'cooperative'
+        });
+        google.maps.event.addListener(map, 'click', function (event) {
+          placeMarker(event.latLng, map);
+        });
 
+        infoWindow = new google.maps.InfoWindow;
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-    var geocoder = new google.maps.Geocoder();
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Found You!');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        var geocoder = new google.maps.Geocoder();
 
-    document.getElementById('submit').addEventListener('click', function () {
-      geocodeAddress(geocoder, map);
-    });
-  }
-  function placeMarker(location, map) {
-    console.log("clicked");
-    console.log('this is location', location);
-    console.log('this is map', map);
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map
-    });
-    markers.push(marker);
-  }
-
-
-  // Sets the map on all markers in the array.
-  function setMapOnAll(map) {
-    for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(map);
-    }
-  }
-
-  // Removes the markers from the map, but keeps them in the array.
-  function clearMarkers() {
-    setMapOnAll(null);
-  }
-
-  // Shows any markers currently in the array.
-  function showMarkers() {
-    setMapOnAll(map);
-  }
-
-  // Deletes all markers in the array by removing references to them.
-  function deleteMarkers() {
-    clearMarkers();
-    markers = [];
-  }
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('address').value;
-    geocoder.geocode({ 'address': address }, function (results, status) {
-      if (status === 'OK') {
-        resultsMap.setCenter(results[0].geometry.location);
+        document.getElementById('submit').addEventListener('click', function () {
+          var address = document.getElementById('address').value;
+          geocodeAddress(geocoder, map, address);
+        });
+        $.get("/api/all").then(function (data) {
+          console.log("this is the data!", data);
+          console.log("this is the geocoder: ", geocoder);
+          console.log("this is the map: ", map);
+          for (var i = 0; i < data.length; i++) {
+            console.log("loopy time", data[i]);
+            geocodeAddress(geocoder, map, data[i].address, "bathroom");
+          }
+          //add a new marker for each object in the data array 
+        });
+      }
+      function placeMarker(location, map) {
+        console.log("clicked");
+        console.log('this is location', location);
+        console.log('this is map', map);
         var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
+          position: location,
+          map: map
+        });
+        markers.push(marker);
+      }
+
+
+      // Sets the map on all markers in the array.
+      function setMapOnAll(map) {
+        console.log("were in the setmaponall");
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+
+      // Removes the markers from the map, but keeps them in the array.
+      function clearMarkers() {
+        setMapOnAll(null);
+      }
+
+      // Shows any markers currently in the array.
+      function showMarkers() {
+        setMapOnAll(map);
+      }
+
+      // Deletes all markers in the array by removing references to them.
+      function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+      }
+      function geocodeAddress(geocoder, resultsMap, address, bathroom) {
+        console.log("this is the address", address);
+
+        geocoder.geocode({ 'address': address }, function (results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+            if (bathroom === "bathroom") {
+              bathMarkers.push(marker)
+            } else {
+              markers.push(marker);
+            }
+
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
         });
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
-    });
-  }
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-  }
-  $("#newBathroom").on("click", function (event) {
-    event.preventDefault();
-    $("#modal").modal("toggle");
-  });
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
-</script>
-</body>
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+      $("#newBathroom").on("click", function (event) {
+        event.preventDefault();
+        $("#modal").modal("toggle");
+      });
+
+
+
+    </script>
+
+
+  </body>
 
 </html>
