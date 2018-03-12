@@ -146,74 +146,65 @@
        
           <!-- Modal content-->
           <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              <div class="modal-body">
-                <p>
-                  <strong>Name</strong>
-         
-                  <input type="text" class="form-control" id="name">
-                </p>
-                <p>
-                  <strong>Adress</strong>
-         
-                  <input type="text" class="form-control" id="address">
-                </p>
-                <p>
-                  <strong>Handicap Acessability</strong>
-                  <select>
-                    <option value="Yes"> Yes</option>
-                    <option value="No"> No</option>
-                  </select>
-                </p>
-                <p>
-                  <strong>Requires Key?</strong>
-                  <select>
-                    <option value="Yes"> Yes</option>
-                    <option value="No"> No</option>
-                  </select>
-                </p>
-                <p>
-                  <strong>Cleanliness</strong>
-                  <select>
-                    <option class="fa-star">&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                  </select>
-                </p>
-                <p>
-                  <strong>privacy</strong>
-                  <select>
-                    <option class="fa-star">&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                    <option class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                  </select>
-                </p>
-                <p>
-                  <strong>Directions</strong>
-                  <input type="text" class="form-control" id="direction">
-                </p>
-                <p>
-                  <strong>closed</strong>
-                  <select>
-                    <option value="Yes"> Yes</option>
-                    <option value="No"> No</option>
-                  </select>
-                </p>
-              </div>
-         
-              <div class="modal-footer">
-                <button id= "bathSubmit" type="button" class="btn btn-default">submit</button>
-              </div>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-         
+            <div class="modal-body">
+              <p>
+                <strong>Name</strong>
+              </p>
+              <input type="text" class="form-control" id="name">
+              <p>
+                <strong>Address</strong>
+              </p>
+              <input type="text" class="form-control" id="address2">
+              <p>
+                <strong>Handicap Acessability</strong>
+              </p>
+              <select id="handicap">
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+              <p>
+                <strong>Clean</strong>
+              </p>
+              <select id="clean">
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>Privacy</strong>
+              </p>
+              <select id="privacy">
+                <option value="fa-star">&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+              <p>
+                <strong>Directions</strong>
+              </p>
+              <input type="text" class="form-control" id="directions">
+              <p>
+                <strong>Closed</strong>
+              </p>
+              <select id="closed">
+                <option value="Yes"> Yes</option>
+                <option value="No"> No</option>
+              </select>
+            </div>
+       
+            <div class="modal-footer">
+              <button id="bathSubmit">submit</button>
+            </div>
           </div>
-         </div>
+       
+        </div>
+       </div>
     <!-- Footer -->
     <footer>
       <div class="container text-center">
@@ -255,21 +246,13 @@
         var newLocation = {
           name: $("#name").val().trim(),
           address: $("#address2").val().trim(),
-          handicap: $("#handicap").val(),
+          handicap: $('#handicap option:selected').val(),
           keyreq: $("#key").val(),
           fee: $("#fee").val(),
-          clean1star: $("#clean1star").val(),
-          clean2star: $("#clean2star").val(),
-          clean3star: $("#clean3star").val(),
-          clean4star: $("#clean4star").val(),
-          clean5star: $("#clean5star").val(),
-          priv1star: $("#priv1star").val(),
-          priv2star: $("#priv2star").val(),
-          priv3star: $("#priv3star").val(),
-          priv4star: $("#priv4star").val(),
-          priv5star: $("#priv5star").val(),
-          directions: $("#direction").val(),
-          closed: $("#closed").val(),
+          clean1star: $("#clean option:selected").val(),
+          priv1star: $("#privacy option:selected").val(),
+          directions: $("#directions").val(),
+          closed: $("#closed option:selected").val(),
         };
         console.log("location////////////////////////////////////////////", newLocation);
 
@@ -327,11 +310,11 @@
         });
         $.get("/api/all").then(function (data) {
           console.log("this is the data!", data);
-          console.log("this is the geocoder: ", geocoder);
-          console.log("this is the map: ", map);
+          // console.log("this is the geocoder: ", geocoder);
+          // console.log("this is the map: ", map);
           for (var i = 0; i < data.length; i++) {
-            console.log("loopy time", data[i]);
-            geocodeAddress(geocoder, map, data[i].address, "bathroom");
+            // console.log("loopy time", data[i]);
+            geocodeAddress(geocoder, map, data[i].address, "bathroom", data[i]);
           }
           //add a new marker for each object in the data array 
         });
@@ -371,7 +354,7 @@
         clearMarkers();
         markers = [];
       }
-      function geocodeAddress(geocoder, resultsMap, address, bathroom) {
+      function geocodeAddress(geocoder, resultsMap, address, bathroom, windowData) {
         console.log("this is the address", address);
 
         geocoder.geocode({ 'address': address }, function (results, status) {
@@ -382,7 +365,20 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              bathMarkers.push(marker)
+              var windowDisplay = "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.clean + "</p>" + "<p>" + "Privacy: " + windowData.privacy + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>" + "<p>" + "Key Required: " + windowData.key + "</p>" + "<p>" + "Fee: " + windowData.fee + "</p>";
+
+
+
+              var infowindow = new google.maps.InfoWindow({
+                content: windowDisplay
+              });
+              marker.addListener('mouseover', function() {
+                infowindow.open(map, marker);
+              });
+               marker.addListener('mouseout', function() {
+                infowindow.close(map, marker);
+              });
+             bathMarkers.push(marker)
             } else {
               markers.push(marker);
             }
