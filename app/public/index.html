@@ -171,6 +171,14 @@
               </select>
             </p>
             <p>
+                <strong>Gender Accommadating</strong>
+              <select id="genderfriend">
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
+              </select>
+            </p>
+            <p>
                 <strong>Cleanliness</strong>
               <select id="cleanStar">
                 <option value=""></option>
@@ -254,6 +262,7 @@
      var newLocation = {
        name: $("#name").val().trim(),
        address: $("#address2").val().trim(),
+       genderfriend: $("#genderfriend").val().trim(),
        handicap: $("#handicap").val(),
        keyreq: $("#key").val(),
        fee: $("#fee").val(),
@@ -268,8 +277,9 @@
        priv4star: 0,
        priv5star: 0,
        directions: $("#direction").val(),
-       closed: $("#closed").val(),
+       closed: $("#close").val(),
      };
+     console.log($("#close").val());
      switch ($("#cleanStar").val()) {
    case 1:
        newLocation.clean1star =  1;
@@ -414,7 +424,7 @@ switch ($("#privStar").val()) {
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
+              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
 
 
 
