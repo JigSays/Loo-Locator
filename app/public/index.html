@@ -199,8 +199,7 @@
             </div>
        
             <div class="modal-footer">
-              <button id="modal-submit" type="button" class="btn btn-default" data-submit="modal">submit</button>
-              <button id="bathSubmit">TEST</button>
+              <button id="bathSubmit" type="button" class="btn btn-default">submit</button>
             </div>
           </div>
        
@@ -226,152 +225,77 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
-    <script>
-//       var geocoder = "TEST!";
-//     function initMap() {
-//        geocoder = new google.maps.Geocoder();
-//       console.log("this is the geocoder", geocoder);
-//     var userLocation = { lat: 41.89633, lng: -87.61871 }; 
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 18,
-//         center: userLocation,
-//         gestureHandling: 'cooperative'
-//     });
-//     google.maps.event.addListener(map, 'click', function(event) {
-//    placeMarker(event.latLng, map);
-// });
-
-//     infoWindow = new google.maps.InfoWindow;
-//     if (navigator.geolocation) {
-//           navigator.geolocation.getCurrentPosition(function(position) {
-//             var pos = {
-//               lat: position.coords.latitude,
-//               lng: position.coords.longitude
-//             };
-
-//             infoWindow.setPosition(pos);
-//             infoWindow.setContent('Found You!');
-//             infoWindow.open(map);
-//             map.setCenter(pos);
-//           }, function() {
-//             handleLocationError(true, infoWindow, map.getCenter());
-//           });
-//         } else {
-//           // Browser doesn't support Geolocation
-//           handleLocationError(false, infoWindow, map.getCenter());
-//         }
-    // var marker = new google.maps.Marker({
-    //       position: userLocation,
-    //       map: map,
-    //       title: 'Click to zoom'
-    //     });
-
-    //     map.addListener('center_changed', function() {
-    //       // 3 seconds after the center of the map has changed, pan back to the
-    //       // marker.
-    //       window.setTimeout(function() {
-    //         map.panTo(marker.getPosition());
-    //       }, 8000);
-    //     });
-
-    
-        // var geocoder = new google.maps.Geocoder();
-
-        // document.getElementById('submit').addEventListener('click', function() {
-        //   var address = document.getElementById('address').value;
-        //   geocodeAddress(geocoder, map, address);
-        // });
-// }
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
     </script>
-      <script defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
-      </script>
-  <script>
+    <script>
 
-// document.getElementById('submit').addEventListener('click', function() {
-//   var address = document.getElementById('address').value;
-//   console.log("this is the working map: ", map);
-//   geocodeAddress(geocoder, map, address);
-// });
-    // var map;
-    // var geocoder = "geocoder test";
-    // var map = "map test";
+      var markers = [];
+      var bathMarkers = [];
 
-    var markers = [];
-    var bathMarkers = [];
-
-$(document).ajaxStart(function(){
-    $("#wait").css("visibility", "visible");
-});
-$(document).ajaxComplete(function(){
-    $("#wait").css("visibility", "hidden");
-});
+      $(document).ajaxStart(function () {
+        $("#wait").css("visibility", "visible");
+      });
+      $(document).ajaxComplete(function () {
+        $("#wait").css("visibility", "hidden");
+      });
 
 
 
-$("#bathSubmit").on("click", function(event){
-    console.log("address test", $("#address2").val());
-  var newLocation = {
-    name: $("#name").val().trim(),
-    long: $("#long").val(),
-    lat: $("#lat").val(),
-    address: $("#address2").val().trim(),
-    handicap: $("#handicap").val(),
-    keyreq: $("#key").val(),
-    fee: $("#fee").val(),
-    clean1star: $("#clean1star").val(),
-    clean2star: $("#clean2star").val(),
-    clean3star: $("#clean3star").val(),
-    clean4star: $("#clean4star").val(),
-    clean5star: $("#clean5star").val(),
-    priv1star: $("#priv1star").val(),
-    priv2star: $("#priv2star").val(),
-    priv3star: $("#priv3star").val(),
-    priv4star: $("#priv4star").val(),
-    priv5star: $("#priv5star").val(),
-    directions: $("#direction").val(),
-    closed: $("#closed").val(),
-  };
-      console.log("location////////////////////////////////////////////", newLocation);
+      $("#bathSubmit").on("click", function (event) {
+        console.log("address test", $("#address2").val());
+        var newLocation = {
+          name: $("#name").val().trim(),
+          long: $("#long").val(),
+          lat: $("#lat").val(),
+          address: $("#address2").val().trim(),
+          handicap: $("#handicap").val(),
+          keyreq: $("#key").val(),
+          fee: $("#fee").val(),
+          clean1star: $("#clean1star").val(),
+          clean2star: $("#clean2star").val(),
+          clean3star: $("#clean3star").val(),
+          clean4star: $("#clean4star").val(),
+          clean5star: $("#clean5star").val(),
+          priv1star: $("#priv1star").val(),
+          priv2star: $("#priv2star").val(),
+          priv3star: $("#priv3star").val(),
+          priv4star: $("#priv4star").val(),
+          priv5star: $("#priv5star").val(),
+          directions: $("#direction").val(),
+          closed: $("#closed").val(),
+        };
+        console.log("location////////////////////////////////////////////", newLocation);
 
-  $.post("/api/new", newLocation)
-      // On success, run the following code
-      .then(function() {
-        var clearModal = document.getElementsByTagName("input");
-        clearModal[4].value = "";
-        clearModal[5].value = "";
-        clearModal[6].value = "";
-        $("#modal").modal("toggle");
+        $.post("/api/new", newLocation)
+          // On success, run the following code
+          .then(function () {
+            var clearModal = document.getElementsByTagName("input");
+            clearModal[4].value = "";
+            clearModal[5].value = "";
+            clearModal[6].value = "";
+            $("#modal").modal("toggle");
           });
-});
+      });
 
+      /** 
+      * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
+      * 
+      */
+      var map, infoWindow;
+      function initMap() {
+        var userLocation = { lat: 41.89633, lng: -87.61871 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: userLocation,
+          gestureHandling: 'cooperative'
+        });
+        google.maps.event.addListener(map, 'click', function (event) {
+          placeMarker(event.latLng, map);
+        });
 
-//click lisyener on modal-submit
-// get all the form info from the modal
-// make a post request 
-
-//get request find all
-// add marker for each location
-
-/** 
-* This function initializes map to the latitude and longitude of Chicago, upon starting the application.
-* 
-*/ 
-var map, infoWindow;
-function initMap() {
-    var userLocation = { lat: 41.89633, lng: -87.61871 }; 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 18,
-        center: userLocation,
-        gestureHandling: 'cooperative'
-    });
-    google.maps.event.addListener(map, 'click', function(event) {
-   placeMarker(event.latLng, map);
-});
-
-    infoWindow = new google.maps.InfoWindow;
-    if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+        infoWindow = new google.maps.InfoWindow;
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
@@ -381,7 +305,7 @@ function initMap() {
             infoWindow.setContent('Found You!');
             infoWindow.open(map);
             map.setCenter(pos);
-          }, function() {
+          }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
           });
         } else {
@@ -390,32 +314,32 @@ function initMap() {
         }
         var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('submit').addEventListener('click', function() {
+        document.getElementById('submit').addEventListener('click', function () {
           var address = document.getElementById('address').value;
           geocodeAddress(geocoder, map, address);
         });
-        $.get("/api/all").then(function(data){
-      console.log("this is the data!", data);
-      console.log("this is the geocoder: ", geocoder);
-      console.log("this is the map: ", map);
-      for (var i = 0; i < data.length; i++){
-        console.log("loopy time", data[i]);
-        geocodeAddress(geocoder, map, data[i].address, "bathroom");
+        $.get("/api/all").then(function (data) {
+          console.log("this is the data!", data);
+          console.log("this is the geocoder: ", geocoder);
+          console.log("this is the map: ", map);
+          for (var i = 0; i < data.length; i++) {
+            console.log("loopy time", data[i]);
+            geocodeAddress(geocoder, map, data[i].address, "bathroom");
+          }
+          //add a new marker for each object in the data array 
+        });
       }
-      //add a new marker for each object in the data array 
-    });
-}
-function placeMarker(location, map) {
-  console.log("clicked");
-  console.log('this is location', location);
-  console.log('this is map', map);
-    var marker = new google.maps.Marker({
-        position: location, 
-        map: map
-    });
-    markers.push(marker);
-}
-      
+      function placeMarker(location, map) {
+        console.log("clicked");
+        console.log('this is location', location);
+        console.log('this is map', map);
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+        markers.push(marker);
+      }
+
 
       // Sets the map on all markers in the array.
       function setMapOnAll(map) {
@@ -440,22 +364,22 @@ function placeMarker(location, map) {
         clearMarkers();
         markers = [];
       }
-function geocodeAddress(geocoder, resultsMap, address, bathroom) {
+      function geocodeAddress(geocoder, resultsMap, address, bathroom) {
         console.log("this is the address", address);
-        
-        geocoder.geocode({'address': address}, function(results, status) {
+
+        geocoder.geocode({ 'address': address }, function (results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
             });
-            if (bathroom === "bathroom"){
+            if (bathroom === "bathroom") {
               bathMarkers.push(marker)
             } else {
               markers.push(marker);
             }
-          
+
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -464,18 +388,18 @@ function geocodeAddress(geocoder, resultsMap, address, bathroom) {
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-      $("#newBathroom").on("click", function(event) {
-      event.preventDefault();
-      $("#modal").modal("toggle");
+      $("#newBathroom").on("click", function (event) {
+        event.preventDefault();
+        $("#modal").modal("toggle");
       });
-     
-      
-  
-  </script>
+
+
+
+    </script>
 
 
   </body>
