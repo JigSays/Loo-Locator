@@ -153,12 +153,12 @@
                 <p>
                   <strong>Name</strong>
          
-                  <input type="text" class="form-control" id="location">
+                  <input type="text" class="form-control" id="name">
                 </p>
                 <p>
                   <strong>Adress</strong>
          
-                  <input type="text" class="form-control" id="Adress">
+                  <input type="text" class="form-control" id="address">
                 </p>
                 <p>
                   <strong>Handicap Acessability</strong>
@@ -196,7 +196,7 @@
                 </p>
                 <p>
                   <strong>Directions</strong>
-                  <input type="text" class="form-control" id="Direction">
+                  <input type="text" class="form-control" id="direction">
                 </p>
                 <p>
                   <strong>closed</strong>
@@ -254,8 +254,6 @@
         console.log("address test", $("#address2").val());
         var newLocation = {
           name: $("#name").val().trim(),
-          long: $("#long").val(),
-          lat: $("#lat").val(),
           address: $("#address2").val().trim(),
           handicap: $("#handicap").val(),
           keyreq: $("#key").val(),
