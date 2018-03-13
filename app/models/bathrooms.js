@@ -3,11 +3,8 @@ module.exports = function(sequelize, Sequelize) {
     name: {
       type: Sequelize.STRING
     },
-    long: {
-      type: Sequelize.FLOAT(10, 6)
-    },
-    lat: {
-      type: Sequelize.FLOAT(10, 6)
+    genderfriend: {
+      type: Sequelize.STRING
     },
     address: {
       type: Sequelize.STRING

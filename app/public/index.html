@@ -87,41 +87,43 @@
     <input id="submit" type="button" value="Loo-hoo!">
     <!-- <input onclick="clearMarkers();" type=button value="Hide Markers">
         <input onclick="showMarkers();" type=button value="Show All Markers"> -->
-    <input onclick="deleteMarkers();" type=button value="Delete Markers">
-    <input id="newBathroom" type="button" value="Add A Bathroom">
-
-  </div>
-</div>
-</nav>
-<!-- About Section -->
-<section id="about" class="content-section text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>About Loo Locator</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quibusdam, iste dolorem alias sequi sint quisquam repellendus
-          quos, ut commodi, est sunt illo. Vitae ab inventore sed! Magnam, expedita voluptas.</p>
+        <input onclick="deleteMarkers();" type=button value="Delete Markers">
+        <input id="newBathroom" type="button" value="Add A Bathroom">
+        
       </div>
-    </div>
-  </div>
-</section>
+ </div>
+ <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About Loo Locator</h2>
+            <p>Whether you have Crohn's, Colitis, IBS or a you just want to find a nice clean public restroom near you or wherever
+                you’re headed, Loo-Locator is here to help! All bathrooms are crowdsourced entries and ratings are based on the
+                submitter’s personal opinion. Loo-Locator | Bean Redheads assumes no legal liability for content and makes assertions
+                to the accuracy of the information provided by our users. </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact" class="content-section text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>Contact the Loo Locator Team</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, itaque? Quas, recusandae rerum odio dolor aut fugit
-          architecto nulla incidunt ea, tempora dolores quis? At cumque magnam sit rem consectetur.</p>
-        <ul class="list-inline banner-social-buttons">
-          <li class="list-inline-item">
-            <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-              <i class="fa fa-github fa-fw"></i>
-              <span class="network-name">Github</span>
-            </a>
-          </li>
-          <!-- <li class="list-inline-item">
+    <!-- Contact Section -->
+    <section id="contact" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Contact the Loo Locator Team</h2>
+            <p>To contact the Loo-Locator Team (aka Bean RedHeads) find us on GitHub! We’d love to hear your suggestions, questions
+                and personal experiences with our app! </p>
+            <ul class="list-inline banner-social-buttons">
+              <li class="list-inline-item">
+                <a href="https://github.com/JigSays/Loo-Locator" class="btn btn-default btn-lg">
+                  <i class="fa fa-github fa-fw"></i>
+                  <span class="network-name">Github</span>
+                </a>
+              </li>
+              <!-- <li class="list-inline-item">
                 <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
                   <i class="fa fa-github fa-fw"></i>
                   <span class="network-name">Github</span>
@@ -141,61 +143,73 @@
 
     <div id="modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-       
+     
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-              <p>
-                <strong>Name</strong>
-              </p>
+              <div>
+                <strong>Loo-cation Name, Please enter a unique name specific to your Loo-cation. Duplicates will NOT render</strong>
               <input type="text" class="form-control" id="name">
-              <p>
-                <strong>Address</strong>
               </p>
+              <p>
+                <strong>Address, Please enter a unique address specific to your Loo-cation. Duplicates will NOT render</strong>
               <input type="text" class="form-control" id="address2">
-              <p>
-                <strong>Handicap Acessability</strong>
               </p>
-              <select>
-                <option value="Yes"> Yes</option>
-                <option value="No"> No</option>
-              </select>
               <p>
-                <strong>clean</strong>
-              </p>
-              <select>
-                <option value="fa-star">&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <strong>Handicap Acessebility</strong>
+              <select id="handicap">
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
               </select>
-              <p>
-                <strong>privacy</strong>
-              </p>
-              <select>
-                <option value="fa-star">&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+            </p>
+            <p>
+                <strong>All-Gender Accommadating</strong>
+              <select id="genderfriend">
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
               </select>
-              <p>
+            </p>
+            <p>
+                <strong>Cleanliness</strong>
+              <select id="cleanStar">
+                <option value=""></option>
+                <option value="1" class="fa-star">&#xf005;</option>
+                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+            </p>
+            <p>
+                <strong>Privacy</strong>
+              <select id="privStar">
+                <option value=""></option>
+                <option value="1" class="fa-star">&#xf005;</option>
+                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+              </select>
+            </p>
+            <p>
                 <strong>Directions</strong>
+              <input type="text" class="form-control" id="direction">
               </p>
-              <input type="text" class="form-control" id="Direction">
               <p>
-                <strong>closed</strong>
+              <strong>Closed for Repairs?</strong>
+              <select id="close">
+                <option value=""></option>
+                <option value="True"> Yes</option>
+                <option value="False"> No</option>
               </p>
-              <select>
-                <option value="Yes"> Yes</option>
-                <option value="No"> No</option>
               </select>
             </div>
-       
+     
             <div class="modal-footer">
               <button id="bathSubmit" type="button" class="btn btn-default">submit</button>
             </div>
@@ -240,40 +254,73 @@
 
 
       $("#bathSubmit").on("click", function (event) {
-        console.log("address test", $("#address2").val());
-        var newLocation = {
-          name: $("#name").val().trim(),
-          long: $("#long").val(),
-          lat: $("#lat").val(),
-          address: $("#address2").val().trim(),
-          handicap: $("#handicap").val(),
-          keyreq: $("#key").val(),
-          fee: $("#fee").val(),
-          clean1star: $("#clean1star").val(),
-          clean2star: $("#clean2star").val(),
-          clean3star: $("#clean3star").val(),
-          clean4star: $("#clean4star").val(),
-          clean5star: $("#clean5star").val(),
-          priv1star: $("#priv1star").val(),
-          priv2star: $("#priv2star").val(),
-          priv3star: $("#priv3star").val(),
-          priv4star: $("#priv4star").val(),
-          priv5star: $("#priv5star").val(),
-          directions: $("#direction").val(),
-          closed: $("#closed").val(),
-        };
-        console.log("location////////////////////////////////////////////", newLocation);
+     console.log("address test", $("#address2").val());
+     var newLocation = {
+       name: $("#name").val().trim(),
+       address: $("#address2").val().trim(),
+       genderfriend: $("#genderfriend").val().trim(),
+       handicap: $("#handicap").val(),
+       keyreq: $("#key").val(),
+       fee: $("#fee").val(),
+       clean1star: 0,
+       clean2star: 0,
+       clean3star: 0,
+       clean4star: 0,
+       clean5star: 0,
+       priv1star: 0,
+       priv2star: 0,
+       priv3star: 0,
+       priv4star: 0,
+       priv5star: 0,
+       directions: $("#direction").val(),
+       closed: $("#close").val(),
+     };
+     console.log($("#close").val());
+     switch ($("#cleanStar").val()) {
+   case 1:
+       newLocation.clean1star =  1;
+       break;
+   case 2:
+       newLocation.clean2star =  1;
+       break;
+   case 3:
+       newLocation.clean3star =  1;
+       break;
+   case 4:
+       newLocation.clean4star =  1;
+       break;
+   case 5:
+       newLocation.clean5star =  1;
+}
+switch ($("#privStar").val()) {
+   case 1:
+       newLocation.priv1star =  1;
+       break;
+   case 2:
+     newLocation.priv2star =  1;
+       break;
+   case 3:
+     newLocation.priv3star =  1;
+       break;
+   case 4:
+     newLocation.priv4star =  1;
+       break;
+   case 5:
+     newLocation.priv5star =  1;
+}
+     console.log("location////////////////////////////////////////////", newLocation);
 
-        $.post("/api/new", newLocation)
-          // On success, run the following code
-          .then(function () {
-            var clearModal = document.getElementsByTagName("input");
-            clearModal[4].value = "";
-            clearModal[5].value = "";
-            clearModal[6].value = "";
-            $("#modal").modal("toggle");
-          });
-      });
+     $.post("/api/new", newLocation)
+       // On success, run the following code
+       .then(function () {
+         var clearModal = document.getElementsByTagName("input");
+         clearModal[4].value = "";
+         clearModal[5].value = "";
+         clearModal[6].value = "";
+         $("#modal").modal("toggle");
+       });
+       
+     });
 
       /** 
       * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
@@ -318,11 +365,11 @@
         });
         $.get("/api/all").then(function (data) {
           console.log("this is the data!", data);
-          console.log("this is the geocoder: ", geocoder);
-          console.log("this is the map: ", map);
+          // console.log("this is the geocoder: ", geocoder);
+          // console.log("this is the map: ", map);
           for (var i = 0; i < data.length; i++) {
-            console.log("loopy time", data[i]);
-            geocodeAddress(geocoder, map, data[i].address, "bathroom");
+            // console.log("loopy time", data[i]);
+            geocodeAddress(geocoder, map, data[i].address, "bathroom", data[i]);
           }
           //add a new marker for each object in the data array 
         });
@@ -362,7 +409,7 @@
         clearMarkers();
         markers = [];
       }
-      function geocodeAddress(geocoder, resultsMap, address, bathroom) {
+      function geocodeAddress(geocoder, resultsMap, address, bathroom, windowData) {
         console.log("this is the address", address);
 
         geocoder.geocode({ 'address': address }, function (results, status) {
@@ -373,7 +420,20 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              bathMarkers.push(marker)
+              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
+
+
+
+              var infowindow = new google.maps.InfoWindow({
+                content: windowDisplay
+              });
+              marker.addListener('mouseover', function() {
+                infowindow.open(map, marker);
+              });
+               marker.addListener('mouseout', function() {
+                infowindow.close(map, marker);
+              });
+             bathMarkers.push(marker)
             } else {
               markers.push(marker);
             }
