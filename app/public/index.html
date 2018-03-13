@@ -122,7 +122,7 @@
                 and personal experiences with our app! </p>
             <ul class="list-inline banner-social-buttons">
               <li class="list-inline-item">
-                <a href="https://github.com/JigSays/Loo-Locator" class="btn btn-default btn-lg">
+                  <a href="https://github.com/JigSays/Loo-Locator" class="btn btn-default btn-lg">
                   <i class="fa fa-github fa-fw"></i>
                   <span class="network-name">Github</span>
                 </a>
@@ -154,32 +154,25 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-              <div>
-                <strong>Loo-cation Name, Please enter a unique name specific to your Loo-cation. Duplicates will NOT render</strong>
+              <p>
+                <strong>Name</strong>
+              </p>
               <input type="text" class="form-control" id="name">
-              </p>
               <p>
-                <strong>Address, Please enter a unique address specific to your Loo-cation. Duplicates will NOT render</strong>
+                <strong>Address</strong>
+              </p>
               <input type="text" class="form-control" id="address2">
-              </p>
               <p>
-                <strong>Handicap Acessebility</strong>
+                <strong>Handicap Acessability</strong>
+              </p>
               <select id="handicap">
                 <option value=""></option>
                 <option value="True"> Yes</option>
                 <option value="False"> No</option>
               </select>
-            </p>
-            <p>
-                <strong>All-Gender Accommadating</strong>
-              <select id="genderfriend">
-                <option value=""></option>
-                <option value="True"> Yes</option>
-                <option value="False"> No</option>
-              </select>
-            </p>
-            <p>
+              <p>
                 <strong>Cleanliness</strong>
+              </p>
               <select id="cleanStar">
                 <option value=""></option>
                 <option value="1" class="fa-star">&#xf005;</option>
@@ -188,9 +181,9 @@
                 <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
                 <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
               </select>
-            </p>
-            <p>
+              <p>
                 <strong>Privacy</strong>
+              </p>
               <select id="privStar">
                 <option value=""></option>
                 <option value="1" class="fa-star">&#xf005;</option>
@@ -199,18 +192,17 @@
                 <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
                 <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
               </select>
-            </p>
-            <p>
-                <strong>Directions</strong>
-              <input type="text" class="form-control" id="direction">
-              </p>
               <p>
-              <strong>Closed for Repairs?</strong>
+                <strong>Directions</strong>
+              </p>
+              <input type="text" class="form-control" id="direction">
+              <p>
+                <strong>Closed</strong>
+              </p>
               <select id="close">
                 <option value=""></option>
                 <option value="True"> Yes</option>
                 <option value="False"> No</option>
-              </p>
               </select>
             </div>
      
@@ -241,6 +233,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
+    <script src="js/math.js"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
     </script>
     <script>
@@ -262,57 +255,24 @@
      var newLocation = {
        name: $("#name").val().trim(),
        address: $("#address2").val().trim(),
-       genderfriend: $("#genderfriend").val().trim(),
        handicap: $("#handicap").val(),
        keyreq: $("#key").val(),
        fee: $("#fee").val(),
-       clean1star: 0,
+       clean1star: $("#cleanStar").val(),
        clean2star: 0,
        clean3star: 0,
        clean4star: 0,
        clean5star: 0,
-       priv1star: 0,
+       priv1star: $("#privStar").val(),
        priv2star: 0,
        priv3star: 0,
        priv4star: 0,
        priv5star: 0,
        directions: $("#direction").val(),
-       closed: $("#close").val(),
+       closed: $("#closed").val(),
      };
-     console.log($("#close").val());
-     switch ($("#cleanStar").val()) {
-   case 1:
-       newLocation.clean1star =  1;
-       break;
-   case 2:
-       newLocation.clean2star =  1;
-       break;
-   case 3:
-       newLocation.clean3star =  1;
-       break;
-   case 4:
-       newLocation.clean4star =  1;
-       break;
-   case 5:
-       newLocation.clean5star =  1;
-}
-switch ($("#privStar").val()) {
-   case 1:
-       newLocation.priv1star =  1;
-       break;
-   case 2:
-     newLocation.priv2star =  1;
-       break;
-   case 3:
-     newLocation.priv3star =  1;
-       break;
-   case 4:
-     newLocation.priv4star =  1;
-       break;
-   case 5:
-     newLocation.priv5star =  1;
-}
-     console.log("location////////////////////////////////////////////", newLocation);
+     
+    console.log("location////////////////////////////////////////////", newLocation);
 
      $.post("/api/new", newLocation)
        // On success, run the following code
@@ -423,8 +383,10 @@ switch ($("#privStar").val()) {
               map: resultsMap,
               position: results[0].geometry.location
             });
+            starMathC(windowData);
+            starMathP(windowData);
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
+              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + clean1star + "</p>" + "<p>" + "Privacy: " + priv1star + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
 
 
 
