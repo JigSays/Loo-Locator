@@ -392,12 +392,20 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.clean1Star + "</p>" + "<p>" + "Privacy: " + windowData.priv1Star + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
+              var windowDisplay = "<p><b>" + windowData.name + "</p></b> <br>"+ 
+                                  "<strong><b>" + "Gender Accommadating: </b>" + windowData.genderfriend + "</strong> <br>" +
+                                  "<strong><b>" + "Handicap Access: </b>" + windowData.handicap + "</strong> <br>" + 
+                                  "<strong><b>" + "Directions: </b>" + windowData.directions + "</strong> <br>" + 
+                                  "<strong><b>" + "Address: </b>" + windowData.address + "</strong> <br>" + 
+                                  "<strong><b>" + "Clean: </b>" + windowData.clean1Star +  "</strong> <br>" +
+                                  "<strong><b>" + "Privacy: </b>" + windowData.priv1Star + "</strong> <br>" + 
+                                  "<strong><b>" + "Closed: </b>" + windowData.closed + "</strong> <br>";
 
 
 
               var infowindow = new google.maps.InfoWindow({
-                content: windowDisplay
+                content: windowDisplay,
+                maxWidth: 200,
               });
               marker.addListener('mouseover', function() {
                 infowindow.open(map, marker);
