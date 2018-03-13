@@ -266,12 +266,12 @@
        handicap: $("#handicap").val(),
        keyreq: $("#key").val(),
        fee: $("#fee").val(),
-       clean1star: 0,
+       clean1star: $("#cleanStar").val(),
        clean2star: 0,
        clean3star: 0,
        clean4star: 0,
        clean5star: 0,
-       priv1star: 0,
+       priv1star: $("#privStar").val(),
        priv2star: 0,
        priv3star: 0,
        priv4star: 0,
@@ -279,39 +279,7 @@
        directions: $("#direction").val(),
        closed: $("#close").val(),
      };
-     console.log($("#close").val());
-     switch ($("#cleanStar").val()) {
-   case 1:
-       newLocation.clean1star =  1;
-       break;
-   case 2:
-       newLocation.clean2star =  1;
-       break;
-   case 3:
-       newLocation.clean3star =  1;
-       break;
-   case 4:
-       newLocation.clean4star =  1;
-       break;
-   case 5:
-       newLocation.clean5star =  1;
-}
-switch ($("#privStar").val()) {
-   case 1:
-       newLocation.priv1star =  1;
-       break;
-   case 2:
-     newLocation.priv2star =  1;
-       break;
-   case 3:
-     newLocation.priv3star =  1;
-       break;
-   case 4:
-     newLocation.priv4star =  1;
-       break;
-   case 5:
-     newLocation.priv5star =  1;
-}
+         
      console.log("location////////////////////////////////////////////", newLocation);
 
      $.post("/api/new", newLocation)
@@ -424,7 +392,7 @@ switch ($("#privStar").val()) {
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.cleanStar + "</p>" + "<p>" + "Privacy: " + windowData.privStar + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
+              var windowDisplay = "<p>" + "Name: " + windowData.name + "</p>"+ "<p>" + "Gender Accommadating: " + windowData.genderfriend + "</p>" + "<p>" + "Directions: " + windowData.directions + "</p>" + "<p>" + "Handicap Access: " + windowData.handicap + "</p>" + "<p>" + "Address: " + windowData.address + "</p>" + "<p>" + "Clean: " + windowData.clean1Star + "</p>" + "<p>" + "Privacy: " + windowData.priv1Star + "</p>" + "<p>" + "Closed: " + windowData.closed + "</p>";
 
 
 
