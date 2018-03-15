@@ -15,6 +15,12 @@ module.exports = function(sequelize, Sequelize) {
     address: {
       type: Sequelize.STRING
     },
+    lat: {
+      type: Sequelize.FLOAT(10,6)
+    },
+    long: {
+      type: Sequelize.FLOAT(10,6)
+    },
     handicap: {
       type: Sequelize.BOOLEAN
     },
