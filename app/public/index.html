@@ -163,7 +163,7 @@
               <input type="text" class="form-control" id="address2">
               </p>
               <p>
-                <strong>Handicap Acessebility</strong>
+                <strong>Handicap Access</strong>
               <select id="handicap">
                 <option value=""></option>
                 <option value="True"> Yes</option>
@@ -279,10 +279,16 @@
        directions: $("#direction").val(),
        closed: $("#close").val(),
      };
-         
-     console.log("location////////////////////////////////////////////", newLocation);
-
-     $.post("/api/new", newLocation)
+    
+    getLatLong($("#address2").val().trim(),function(address){
+      console.log("weve got the address back", address);
+      // newLocation.address = address;
+      var lat = address.lat();
+      var lng = address.lng();
+      newLocation.lat = lat;
+      newLocation.lng = lng;
+      console.log("this is the location", newLocation);
+       $.post("/api/new", newLocation)
        // On success, run the following code
        .then(function () {
          var clearModal = document.getElementsByTagName("input");
@@ -291,6 +297,17 @@
          clearModal[6].value = "";
          $("#modal").modal("toggle");
        });
+    })
+
+    //  $.post("/api/new", newLocation)
+    //    // On success, run the following code
+    //    .then(function () {
+    //      var clearModal = document.getElementsByTagName("input");
+    //      clearModal[4].value = "";
+    //      clearModal[5].value = "";
+    //      clearModal[6].value = "";
+    //      $("#modal").modal("toggle");
+    //    });
        
      });
 
@@ -298,6 +315,7 @@
       * This function initializes map to the latitude and longitude of Chicago, upon starting the application.
       * 
       */
+     var infoWindows = [];
       var map, infoWindow;
       function initMap() {
         var userLocation = { lat: 41.89633, lng: -87.61871 };
@@ -340,11 +358,45 @@
           // console.log("this is the geocoder: ", geocoder);
           // console.log("this is the map: ", map);
           for (var i = 0; i < data.length; i++) {
-            // console.log("loopy time", data[i]);
-            geocodeAddress(geocoder, map, data[i].address, "bathroom", data[i]);
+            console.log("loopy time", data[i]);
+            // geocodeAddress(geocoder, map, data[i].address, "bathroom", data[i]);
+            var pos = {
+              lat: data[i].lat,
+              lng: data[i].lng
+            };
+            var marker = new google.maps.Marker({
+              position: pos,
+              map: map
+            });
+
+            var windowDisplay = "<p><b>" + data[i].name + "</p></b> <br>"+ 
+            "<strong><b>" + "All-Gender Accommadating: </b>" + data[i].genderfriend + "</strong> <br>" +
+            "<strong><b>" + "Handicap Access: </b>" + data[i].handicap + "</strong> <br>" + 
+            "<strong><b>" + "Directions: </b>" + data[i].directions + "</strong> <br>" + 
+            "<strong><b>" + "Address: </b>" + data[i].address + "</strong> <br>" + 
+            "<strong><b>" + "Clean: </b>" + data[i].clean1Star +  "</strong> <br>" +
+            "<strong><b>" + "Privacy: </b>" + data[i].priv1Star + "</strong> <br>" + 
+            "<strong><b>" + "Closed: </b>" + data[i].closed + "</strong> <br>";
+
+
+            console.log('this is windowDisplay', windowDisplay);
+
+            marker.content = windowDisplay;
+
+            infowindow = new google.maps.InfoWindow()
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(this.content);
+                infowindow.open(this.getMap(), this);
+
+            });
+            
+            markers.push(marker);
           }
           //add a new marker for each object in the data array 
+
         });
+      
       }
       function placeMarker(location, map) {
         console.log("clicked");
@@ -381,6 +433,13 @@
         clearMarkers();
         markers = [];
       }
+      var getLatLong = function(address, cb){
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': address }, function (results, status) {
+        console.log("results ", results[0]);
+        cb(results[0].geometry.location);
+      })}
+
       function geocodeAddress(geocoder, resultsMap, address, bathroom, windowData) {
         console.log("this is the address", address);
 
@@ -392,28 +451,28 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-              var windowDisplay = "<p><b>" + windowData.name + "</p></b> <br>"+ 
-                                  "<strong><b>" + "Gender Accommadating: </b>" + windowData.genderfriend + "</strong> <br>" +
-                                  "<strong><b>" + "Handicap Access: </b>" + windowData.handicap + "</strong> <br>" + 
-                                  "<strong><b>" + "Directions: </b>" + windowData.directions + "</strong> <br>" + 
-                                  "<strong><b>" + "Address: </b>" + windowData.address + "</strong> <br>" + 
-                                  "<strong><b>" + "Clean: </b>" + windowData.clean1Star +  "</strong> <br>" +
-                                  "<strong><b>" + "Privacy: </b>" + windowData.priv1Star + "</strong> <br>" + 
-                                  "<strong><b>" + "Closed: </b>" + windowData.closed + "</strong> <br>";
+              // var windowDisplay = "<p><b>" + windowData.name + "</p></b> <br>"+ 
+              //                     "<strong><b>" + "All-Gender Accommadating: </b>" + windowData.genderfriend + "</strong> <br>" +
+              //                     "<strong><b>" + "Handicap Access: </b>" + windowData.handicap + "</strong> <br>" + 
+              //                     "<strong><b>" + "Directions: </b>" + windowData.directions + "</strong> <br>" + 
+              //                     "<strong><b>" + "Address: </b>" + windowData.address + "</strong> <br>" + 
+              //                     "<strong><b>" + "Clean: </b>" + windowData.clean1Star +  "</strong> <br>" +
+              //                     "<strong><b>" + "Privacy: </b>" + windowData.priv1Star + "</strong> <br>" + 
+              //                     "<strong><b>" + "Closed: </b>" + windowData.closed + "</strong> <br>";
 
 
 
-              var infowindow = new google.maps.InfoWindow({
-                content: windowDisplay,
-                maxWidth: 200,
-              });
-              marker.addListener('mouseover', function() {
-                infowindow.open(map, marker);
-              });
-               marker.addListener('mouseout', function() {
-                infowindow.close(map, marker);
-              });
-             bathMarkers.push(marker)
+              // var infowindow = new google.maps.InfoWindow({
+              //   content: windowDisplay,
+              //   maxWidth: 200,
+              // });
+              // marker.addListener('mouseover', function() {
+              //   infowindow.open(map, marker);
+              // });
+              //  marker.addListener('mouseout', function() {
+              //   infowindow.close(map, marker);
+              // });
+            //  bathMarkers.push(marker)
             } else {
               markers.push(marker);
             }
