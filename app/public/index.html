@@ -1,95 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Loo Locator</title>
+  <title>Loo Locator</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Gloria+Hallelujah" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <!-- Custom styles for this template -->
-    <link href="css/grayscale.css" rel="stylesheet">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Gloria+Hallelujah" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+  <link href="css/modal.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-   </style>
 
-  </head>
+    #map {
+      height: 100%;
+    }
+  </style>
+</head>
+/* Optional: Makes the sample page fill the window. */
 
-  <body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#page-top">Loo Locator</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#map">Map</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="#page-top">Loo Locator</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#map">Map</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+<!-- Intro Header -->
+<header class="masthead">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="brand-heading">Loo Locator</h1>
+          <p class="intro-text">"Find your loo, so you can poo."
+            <br>Created by "The Bean Red Heads."</p>
+          <a href="#map" class="btn btn-circle">
+            <i class="fa fa-angle-double-down animated"></i>
+          </a>
         </div>
       </div>
-    </nav>
+    </div>
+  </div>
+</header>
 
-    <!-- Intro Header -->
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Loo Locator</h1>
-              <p class="intro-text">"Find your loo, so you can poo."
-                <br>Created by "The Bean Red Heads."</p>
-              <a href="#map" class="btn btn-circle">
-                <i class="fa fa-angle-double-down animated"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+<!-- Map Section -->
 
-    <!-- Map Section -->
-   
-    <div id="map" style="width: 100%; height: 90%"></div>
-    
+<div id="map" style="width: 100%; height: 90%"></div>
+
 <div>
-     <div id="floating-panel">
-        <input id="address" type="textbox" value="Chicago, IL">
-        <input id="submit" type="button" value="Loo-hoo!">
-        <!-- <input onclick="clearMarkers();" type=button value="Hide Markers">
+  <div id="floating-panel">
+    <input id="address" type="textbox" value="Chicago, IL">
+    <input id="submit" type="button" value="Loo-hoo!">
+    <!-- <input onclick="clearMarkers();" type=button value="Hide Markers">
         <input onclick="showMarkers();" type=button value="Show All Markers"> -->
         <input onclick="deleteMarkers();" type=button value="Delete Markers">
         <input id="newBathroom" type="button" value="Add A Bathroom">
@@ -226,12 +222,12 @@
       <div class="container text-center">
         <p>Copyright &copy; Loo Locator 2018</p>
       </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script src="./vendor/jquery/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
     <!-- Plugin JavaScript -->
     <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
@@ -483,6 +479,8 @@
             // alert('Geocode was not successful for the following reason: ' + status);
           }
         });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
       }
       // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       //   infoWindow.setPosition(pos);
