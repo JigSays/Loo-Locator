@@ -89,14 +89,13 @@
      <div id="floating-panel">
         <input id="address" type="textbox" value="Chicago, IL">
         <input id="submit" type="button" value="Loo-hoo!">
-        <!-- <input onclick="clearMarkers();" type=button value="Hide Markers">
-        <input onclick="showMarkers();" type=button value="Show All Markers"> -->
         <input onclick="deleteMarkers();" type=button value="Delete Markers">
         <input id="newBathroom" type="button" value="Add A Bathroom">
         
       </div>
  </div>
  <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
+
     <!-- About Section -->
     <section id="about" class="content-section text-center">
       <div class="container">
@@ -127,18 +126,6 @@
                   <span class="network-name">Github</span>
                 </a>
               </li>
-              <!-- <li class="list-inline-item">
-                <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-                  <i class="fa fa-github fa-fw"></i>
-                  <span class="network-name">Github</span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-                  <i class="fa fa-github fa-fw"></i>
-                  <span class="network-name">Github</span>
-                </a>
-              </li> -->
             </ul>
           </div>
         </div>
@@ -155,63 +142,48 @@
             </div>
             <div class="modal-body">
               <div>
-                <strong>Loo-cation Name, Please enter a unique name specific to your Loo-cation. Duplicates will NOT render</strong>
-              <input type="text" class="form-control" id="name">
-              </p>
-              <p>
-                <strong>Address, Please enter a unique address specific to your Loo-cation. Duplicates will NOT render</strong>
-              <input type="text" class="form-control" id="address2">
-              </p>
-              <p>
+                <strong>Loo-cation Name:</strong>
+                  <input type="text" class="form-control" id="name">
+                <strong>Address:</strong>
+                  <input type="text" class="form-control" id="address2">
                 <strong>Handicap Access</strong>
-              <select id="handicap">
-                <option value=""></option>
-                <option value="True"> Yes</option>
-                <option value="False"> No</option>
-              </select>
-            </p>
-            <p>
+                  <select id="handicap">
+                    <option value=""></option>
+                    <option value="True"> Yes</option>
+                    <option value="False"> No</option>
+                  </select><br>
                 <strong>All-Gender Accommadating</strong>
-              <select id="genderfriend">
-                <option value=""></option>
-                <option value="True"> Yes</option>
-                <option value="False"> No</option>
-              </select>
-            </p>
-            <p>
+                  <select id="genderfriend">
+                    <option value=""></option>
+                    <option value="True"> Yes</option>
+                    <option value="False"> No</option>
+                  </select><br>
                 <strong>Cleanliness</strong>
-              <select id="cleanStar">
-                <option value=""></option>
-                <option value="1" class="fa-star">&#xf005;</option>
-                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
-                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-              </select>
-            </p>
-            <p>
+                  <select id="cleanStar">
+                    <option value=""></option>
+                    <option value="1" class="fa-star">&#xf005;</option>
+                    <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                    <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                    <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                    <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                  </select><br>
                 <strong>Privacy</strong>
-              <select id="privStar">
-                <option value=""></option>
-                <option value="1" class="fa-star">&#xf005;</option>
-                <option value="2" class="fa-star">&#xf005;&#xf005;</option>
-                <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
-                <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
-                <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
-              </select>
-            </p>
-            <p>
+                  <select id="privStar">
+                    <option value=""></option>
+                    <option value="1" class="fa-star">&#xf005;</option>
+                    <option value="2" class="fa-star">&#xf005;&#xf005;</option>
+                    <option value="3" class="fa-star">&#xf005;&#xf005;&#xf005;</option>
+                    <option value="4" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                    <option value="5" class="fa-star">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                  </select><br>
                 <strong>Directions</strong>
-              <input type="text" class="form-control" id="direction">
-              </p>
-              <p>
-              <strong>Closed for Repairs?</strong>
-              <select id="close">
-                <option value=""></option>
-                <option value="True"> Yes</option>
-                <option value="False"> No</option>
-              </p>
-              </select>
+                  <input type="text" class="form-control" id="direction">
+                <strong>Closed for Repairs?</strong>
+                <select id="close">
+                  <option value=""></option>
+                  <option value="True"> Yes</option>
+                  <option value="False"> No</option>
+                </select>
             </div>
      
             <div class="modal-footer">
@@ -233,12 +205,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <!-- <script src="./vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM"></script> -->
-
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.js"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5S3HY_HcD1tcwYlCjWqC0HpZCkGs0_HM&callback=initMap">
@@ -256,6 +222,7 @@
       });
 
 
+//Creates nre location for database
 
       $("#bathSubmit").on("click", function (event) {
      console.log("address test", $("#address2").val());
@@ -281,14 +248,12 @@
      };
     
     getLatLong($("#address2").val().trim(),function(address){
-      console.log("weve got the address back", address);
       // newLocation.address = address;
       var lat = address.lat();
       var lng = address.lng();
       newLocation.lat = lat;
       newLocation.lng = lng;
-      console.log("this is the location", newLocation);
-       $.post("/api/new", newLocation)
+      $.post("/api/new", newLocation)
        // On success, run the following code
        .then(function () {
          var clearModal = document.getElementsByTagName("input");
@@ -298,17 +263,7 @@
          $("#modal").modal("toggle");
        });
     })
-
-    //  $.post("/api/new", newLocation)
-    //    // On success, run the following code
-    //    .then(function () {
-    //      var clearModal = document.getElementsByTagName("input");
-    //      clearModal[4].value = "";
-    //      clearModal[5].value = "";
-    //      clearModal[6].value = "";
-    //      $("#modal").modal("toggle");
-    //    });
-       
+   
      });
 
       /** 
@@ -354,11 +309,7 @@
           geocodeAddress(geocoder, map, address);
         });
         $.get("/api/all").then(function (data) {
-          console.log("this is the data!", data);
-          // console.log("this is the geocoder: ", geocoder);
-          // console.log("this is the map: ", map);
           for (var i = 0; i < data.length; i++) {
-            console.log("loopy time", data[i]);
             // geocodeAddress(geocoder, map, data[i].address, "bathroom", data[i]);
             var pos = {
               lat: data[i].lat,
@@ -369,17 +320,15 @@
               map: map
             });
 
-            var windowDisplay = "<p><b>" + data[i].name + "</p></b> <br>"+ 
+            //Fills display window with incoming data from database
+            var windowDisplay = "<p><b>" + data[i].name + "</p></b> <br>"+
+            "<strong><b>" + "Address: </b>" + data[i].address + "</strong> <br>" + 
             "<strong><b>" + "All-Gender Accommadating: </b>" + data[i].genderfriend + "</strong> <br>" +
             "<strong><b>" + "Handicap Access: </b>" + data[i].handicap + "</strong> <br>" + 
             "<strong><b>" + "Directions: </b>" + data[i].directions + "</strong> <br>" + 
-            "<strong><b>" + "Address: </b>" + data[i].address + "</strong> <br>" + 
-            "<strong><b>" + "Clean: </b>" + data[i].clean1Star +  "</strong> <br>" +
-            "<strong><b>" + "Privacy: </b>" + data[i].priv1Star + "</strong> <br>" + 
+            "<strong><b>" + "Clean: </b>" + data[i].clean1star +  "/5</strong> <br>" +
+            "<strong><b>" + "Privacy: </b>" + data[i].priv1star + "/5</strong> <br>" + 
             "<strong><b>" + "Closed: </b>" + data[i].closed + "</strong> <br>";
-
-
-            console.log('this is windowDisplay', windowDisplay);
 
             marker.content = windowDisplay;
 
@@ -451,47 +400,15 @@
               position: results[0].geometry.location
             });
             if (bathroom === "bathroom") {
-
-              // var windowDisplay = "<p><b>" + windowData.name + "</p></b> <br>"+ 
-              //                     "<strong><b>" + "All-Gender Accommadating: </b>" + windowData.genderfriend + "</strong> <br>" +
-              //                     "<strong><b>" + "Handicap Access: </b>" + windowData.handicap + "</strong> <br>" + 
-              //                     "<strong><b>" + "Directions: </b>" + windowData.directions + "</strong> <br>" + 
-              //                     "<strong><b>" + "Address: </b>" + windowData.address + "</strong> <br>" + 
-              //                     "<strong><b>" + "Clean: </b>" + windowData.clean1Star +  "</strong> <br>" +
-              //                     "<strong><b>" + "Privacy: </b>" + windowData.priv1Star + "</strong> <br>" + 
-              //                     "<strong><b>" + "Closed: </b>" + windowData.closed + "</strong> <br>";
-
-
-
-              // var infowindow = new google.maps.InfoWindow({
-              //   content: windowDisplay,
-              //   maxWidth: 200,
-              // });
-              // marker.addListener('mouseover', function() {
-              //   infowindow.open(map, marker);
-              // });
-              //  marker.addListener('mouseout', function() {
-              //   infowindow.close(map, marker);
-              // });
-            //  bathMarkers.push(marker)
-
-            } else {
+             } else {
               markers.push(marker);
             }
-
           } else {
             // alert('Geocode was not successful for the following reason: ' + status);
           }
         });
       }
-      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent(browserHasGeolocation ?
-      //     'Error: The Geolocation service failed.' :
-      //     'Error: Your browser doesn\'t support geolocation.');
-      //   infoWindow.open(map);
-      // }
-      $("#newBathroom").on("click", function (event) {
+     $("#newBathroom").on("click", function (event) {
         event.preventDefault();
         $("#modal").modal("toggle");
       });
